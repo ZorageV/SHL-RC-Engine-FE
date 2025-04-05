@@ -35,8 +35,8 @@ interface SearchResult {
 
 const SearchInterface: React.FC = () => {
   const [query, setQuery] = useState("");
-  const [time, setTime] = useState<number>(70);
-  const [topK, setTopK] = useState<number>(10);
+  const [time, setTime] = useState<number>(60);
+  const [topK, setTopK] = useState<number>(3);
   const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -210,6 +210,14 @@ const SearchInterface: React.FC = () => {
         </Grid>
       </Paper>
 
+      {results.length === 0 && !loading && !error && query.trim() && (
+        <Typography
+          variant="h6"
+          sx={{ mt: 4, textAlign: "center", color: "gray", fontWeight: 500 }}
+        >
+          No jobs found for these filters.
+        </Typography>
+      )}
       {results.map((result) => (
         <Paper
           key={result.metadata.id}
