@@ -46,7 +46,7 @@ const SearchInterface: React.FC = () => {
     setError(null);
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/search",
+        "http://3.7.71.10/search",
         {
           query,
           time,
