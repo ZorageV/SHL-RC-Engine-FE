@@ -46,7 +46,7 @@ const SearchInterface: React.FC = () => {
     setError(null);
     try {
       const response = await axios.post(
-        "http://3.7.71.10/search",
+        "https://api.zorage.site/search",
         {
           query,
           time,
