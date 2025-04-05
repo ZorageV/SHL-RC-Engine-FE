@@ -121,9 +121,16 @@ const SearchInterface: React.FC = () => {
             <TextField
               type="number"
               value={time}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setTime(Math.min(200, Math.max(30, Number(e.target.value))))
-              }
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                const value = Math.min(
+                  200,
+                  Math.max(0, Number(e.target.value))
+                );
+                setTime(value);
+              }}
+              onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+                e.target.value = e.target.value.replace(/^0+(?!$)/, ""); // Remove leading zeros
+              }}
               inputProps={{ min: 0, max: 200 }}
               sx={{
                 width: 120,
@@ -148,9 +155,13 @@ const SearchInterface: React.FC = () => {
             <TextField
               type="number"
               value={topK}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setTopK(Math.min(10, Math.max(1, Number(e.target.value))))
-              }
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                const value = Math.min(10, Math.max(0, Number(e.target.value)));
+                setTopK(value);
+              }}
+              onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+                e.target.value = e.target.value.replace(/^0+(?!$)/, ""); // Remove leading zeros
+              }}
               inputProps={{ min: 0, max: 10 }}
               sx={{
                 width: 120,
