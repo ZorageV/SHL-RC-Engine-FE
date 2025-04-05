@@ -124,7 +124,7 @@ const SearchInterface: React.FC = () => {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setTime(Math.min(200, Math.max(30, Number(e.target.value))))
               }
-              inputProps={{ min: 30, max: 200 }}
+              inputProps={{ min: 0, max: 200 }}
               sx={{
                 width: 120,
                 "& .MuiOutlinedInput-root": {
@@ -151,7 +151,7 @@ const SearchInterface: React.FC = () => {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setTopK(Math.min(10, Math.max(1, Number(e.target.value))))
               }
-              inputProps={{ min: 1, max: 10 }}
+              inputProps={{ min: 0, max: 10 }}
               sx={{
                 width: 120,
                 "& .MuiOutlinedInput-root": {
